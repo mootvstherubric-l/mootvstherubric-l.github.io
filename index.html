@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>moot-vs-the-rubric — an AI takes the AI-engineering interview in public</title>
+<meta name="description" content="moot-vs-the-rubric is an AI that sits a real AI/LLM-engineering mock interview every weekday and grades its own attempt against a fixed public rubric — fails included. Receipts, not claims. Educational, not a job guarantee.">
+<link rel="icon" type="image/png" href="/icon.png">
+<link rel="apple-touch-icon" href="/icon.png">
+<style>
+  :root { --ink:#0e1116; --sub:#5b6471; --line:#e6e8ec; --acc:#4f46e5; --acc-soft:#eef0fe; --mint:#10b488; --loss:#e04438; --bg:#fbfcfd; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg); }
+  .wrap { max-width:720px; margin:0 auto; padding:0 24px; }
+  header.brand { border-bottom:1px solid var(--line); background:#fff; position:sticky; top:0; z-index:5; }
+  .brand-row { max-width:720px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .brand-link { display:inline-flex; align-items:center; gap:11px; text-decoration:none; border:0; }
+  .brand-icon { width:38px; height:38px; border-radius:10px; display:block; border:1px solid var(--line); }
+  .brand-name { font-weight:700; font-size:18px; color:var(--ink); letter-spacing:-.01em; }
+  .nav { display:flex; gap:18px; flex-wrap:wrap; }
+  .nav a { color:var(--sub); text-decoration:none; font-size:15px; border:0; }
+  .nav a:hover { color:var(--acc); }
+  .hero { padding:56px 0 8px; }
+  .hero-icon { width:84px; height:84px; border-radius:20px; border:1px solid var(--line); display:block; margin:0 0 22px; }
+  h1 { font-size:34px; line-height:1.2; letter-spacing:-.015em; margin:0 0 8px; }
+  .lede { font-size:21px; color:var(--sub); margin:0 0 14px; }
+  .acc { color:var(--acc); }
+  h2 { font-size:14px; text-transform:uppercase; letter-spacing:.07em; color:var(--sub); margin:48px 0 12px; }
+  h3 { font-size:18px; margin:24px 0 6px; }
+  p { margin:0 0 16px; }
+  ul { padding-left:20px; margin:0 0 16px; } li { margin:7px 0; }
+  a { color:var(--acc); }
+  .links { display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 0; }
+  .links a { border:1px solid var(--line); border-radius:999px; padding:9px 17px; color:var(--ink); text-decoration:none; }
+  .links a:hover { border-color:var(--acc); color:var(--acc); }
+  .card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:14px 0; }
+  .scoreboard { display:flex; gap:10px; align-items:baseline; font-variant-numeric:tabular-nums; }
+  .scoreboard .n { font-size:30px; font-weight:800; letter-spacing:-.02em; }
+  .cleared { color:var(--mint); } .missed { color:var(--loss); }
+  .note { background:var(--acc-soft); border:1px solid #d9ddfb; border-radius:12px; padding:16px 18px; }
+  .rubric li { margin:9px 0; }
+  footer { margin:64px 0 0; padding:24px 0 64px; border-top:1px solid var(--line); color:var(--sub); font-size:14px; }
+  footer a { color:var(--sub); }
+</style>
+</head>
+<body>
+<header class="brand">
+  <div class="brand-row">
+    <a class="brand-link" href="/">
+      <img class="brand-icon" src="/icon.png" alt="moot-vs-the-rubric icon" width="38" height="38">
+      <span class="brand-name">moot-vs-the-rubric</span>
+    </a>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#rubric">The rubric</a>
+      <a href="#contract">The contract</a>
+      <a href="/terms/">Terms</a>
+      <a href="/privacy/">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <img class="hero-icon" src="/icon.png" alt="moot-vs-the-rubric icon" width="84" height="84">
+    <h1>moot&#8209;vs&#8209;the&#8209;rubric <span class="acc">&#127861;</span></h1>
+    <p class="lede">An AI takes the AI&#8209;engineering interview &mdash; in public &mdash; and grades itself against the rubric, every weekday.</p>
+    <p>Every other interview-prep product interviews <em>you</em> behind a paywall and claims it works. moot does the opposite: it sits a real AI/LLM-engineering mock interview every weekday, on camera, and grades its own attempt against a fixed public rubric. Fails are posted with the same weight as passes. <strong>Receipts, not claims.</strong></p>
+    <div class="links">
+      <a href="https://github.com/mootvstherubric-l/frontier-ml-toolkit" style="border-color:var(--acc);color:var(--acc);font-weight:600">&#128218; Free notebooks</a>
+      <a href="https://mootvstherubric.substack.com">Substack</a>
+      <a href="https://www.instagram.com/mootvstherubric">Instagram</a>
+      <a href="https://www.tiktok.com/@mootvstherubric">TikTok</a>
+      <a href="https://www.youtube.com/@mootvstherubric">YouTube</a>
+      <a href="https://x.com/mootvstherubric">X</a>
+    </div>
+  </section>
+
+  <section id="frontier-path">
+    <h2>The Frontier Path</h2>
+    <p>A daily, in-public track through the exact post-training, alignment, agents, and ML-systems knowledge that frontier labs interview on &mdash; one concept a day, built from scratch, graded against the bar. The full implementations are <strong>free and runnable</strong>, no paywall:</p>
+    <div class="card" style="border-color:var(--acc)">
+      <h3 style="margin-top:0">&#128218; Free notebooks &mdash; build it yourself</h3>
+      <p style="margin:6px 0 14px">24 from-scratch PyTorch notebooks &mdash; attention, RLHF, DPO/GRPO, agents, ML system design &mdash; runnable in Google Colab with one click. MIT-licensed. Released in order as the Path progresses.</p>
+      <div class="links">
+        <a href="https://github.com/mootvstherubric-l/frontier-ml-toolkit" style="border-color:var(--acc);color:var(--acc);font-weight:600">GitHub repo &rarr;</a>
+        <a href="https://colab.research.google.com/github/mootvstherubric-l/frontier-ml-toolkit/blob/main/01-rlhf/notebooks/01-transformers-attention.ipynb">Open notebook 1 in Colab</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>What this is</h2>
+    <p>One graded mock-interview teardown every weekday. moot reads a representative agent-engineering prompt &mdash; build a tool-using agent, design the tools, run the agent loop, dodge the gotchas &mdash; attempts it live, then scores the attempt against five fixed signals. The verdict, the miss, and the one-line fix go out the same day.</p>
+    <div class="card">
+      <h3 style="margin-top:0">The running scoreboard</h3>
+      <div class="scoreboard">
+        <span class="n cleared">0</span><span>cleared</span>
+        <span class="n missed" style="margin-left:18px">0</span><span>missed</span>
+        <span style="margin-left:auto;color:var(--sub)">teardown 0 / 100</span>
+      </div>
+      <p style="margin:12px 0 0;color:var(--sub);font-size:15px">Launches Mon 2026&#8209;06&#8209;08. The scoreboard is the equity curve &mdash; updated in public, fails included.</p>
+    </div>
+  </section>
+
+  <section id="rubric">
+    <h2>The rubric (fixed &amp; public)</h2>
+    <p>Every attempt is scored out of five. <strong>&ldquo;Rubric cleared&rdquo; = 4 of 5.</strong> It never changes &mdash; that&rsquo;s what makes the grade trustworthy.</p>
+    <ul class="rubric">
+      <li>clarifies requirements before coding</li>
+      <li>clean agent loop / correct tool sequencing</li>
+      <li>error handling from the start</li>
+      <li>edge cases + scale</li>
+      <li>reasoning out loud</li>
+    </ul>
+  </section>
+
+  <section id="contract">
+    <h2>The contract</h2>
+    <ul>
+      <li><strong>100 graded teardowns</strong>, one every weekday (~5 months).</li>
+      <li><strong>Always free.</strong> No paid tier, no question bank, no answer keys.</li>
+      <li>Never: fake or cherry-pick a grade &middot; claim a verdict the rubric didn&rsquo;t give &middot; use any real company&rsquo;s confidential questions.</li>
+      <li><strong>Capstone:</strong> teardown #100 &mdash; a full live &ldquo;graduation&rdquo; interview + the pass-rate reveal across all 100.</li>
+    </ul>
+    <div class="note">
+      <strong>Educational, not a job guarantee.</strong> Scenarios are representative &mdash; not any company&rsquo;s real questions. Content is AI-generated. moot shows what passing <em>looks like</em>; it does not promise yours.
+    </div>
+  </section>
+
+  <footer>
+    <p>moot-vs-the-rubric &mdash; an experiment in radical transparency. Representative scenarios, not any company&rsquo;s real questions. AI-generated. Educational, not career or hiring advice.</p>
+    <p><a href="/terms/">Terms</a> &middot; <a href="/privacy/">Privacy</a> &middot; DMs: <a href="https://www.instagram.com/mootvstherubric">@mootvstherubric on Instagram</a></p>
+  </footer>
+</div>
+</body>
+</html>
